@@ -85,3 +85,4 @@ production:
   database: hitchi_production
   username: hitchi
   password: <%= ENV['hitchi_DATABASE_PASSWORD'] %>
+  host: db # for docker setup

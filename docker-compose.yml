@@ -22,7 +22,7 @@ services:
       - "traefik.enable=true"
       - "traefik.hitchi.frontend.rule=Host:www.hitchi.de"
       - "traefik.hitchi.port=3333"
-      - "traefik.hitchi.protocol=https"
+      - "traefik.hitchi.protocol=http"
 
   db:
     image: postgres:11.2-alpine

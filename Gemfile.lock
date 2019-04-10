@@ -74,7 +74,7 @@ GEM
     cookiejar (0.3.3)
     crass (1.0.4)
     debug_inspector (0.0.3)
-    devise (4.6.1)
+    devise (4.6.2)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 4.1.0, < 6.0)
@@ -265,7 +265,7 @@ DEPENDENCIES
   clipboard-rails
   cloudinary
   coffee-rails
-  devise (= 4.6.1)
+  devise (~> 4.6.1)
   devise-i18n
   dotenv-rails
   em-http-request

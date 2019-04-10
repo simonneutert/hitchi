@@ -6,8 +6,8 @@ class UserTest < ActiveSupport::TestCase
     @user = User.first
   end
 
-  test 'user has a uid' do
-    @user.uid = nil
+  test 'user has a id' do
+    @user.id = nil
     assert_not @user.valid?
   end
 end

@@ -1,5 +1,5 @@
 class AnswersController < ApplicationController
-  before_action :check_userpermission
+  before_action :authenticate_user!
   before_action :set_answer, only: [:show, :edit, :update, :destroy]
 
   # GET /answers
@@ -104,26 +104,6 @@ class AnswersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_answer
       @answer = Answer.find(params[:id])
-    end
-
-    def check_session_permission
-      if session[:expires_at] < Time.current
-        session[:user_id] = nil
-        session[:expires_at] = Time.now
-        redirect_to signout_path
-      end
-    end
-
-    def check_userpermission
-      if !current_user
-        redirect_to root_path
-      else
-        if session[:expires_at]
-          check_session_permission
-        else
-          redirect_to root_path
-        end
-      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

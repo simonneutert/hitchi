@@ -34,7 +34,6 @@
 <% if message.answers.count >0 %>
 <div class="card shadow answer">
   <div class="card-top">
-    <p><small><strong><%= link_to User.find(message.answers.last.sender).name, offers_linkout_path(message.offer.id, User.find(message.answers.last.sender).uid), target: '_blank' %></strong> um <strong><%= message.answers.last.created_at.strftime("%H:%M Uhr").to_s %></strong><%= " (" + message.answers.last.created_at.strftime("%d.%m.%Y").to_s + ")" %></small></p>
   </div>
 </div>
 <%end%>

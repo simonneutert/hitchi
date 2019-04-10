@@ -3,6 +3,7 @@ title: "hitchi FAQ - die Mitfahrgelegenheit aus der Community - ohne Abzocke", d
 
 <div class="row">
   <div class="col-md-10 col-md-offset-1">
+
     <div class="row">
       <div class="col-md-12">
         <h2>
@@ -12,10 +13,11 @@ title: "hitchi FAQ - die Mitfahrgelegenheit aus der Community - ohne Abzocke", d
         <p id="notice" class="text-center"><%= params[:info] %></p>
         <% end %>
         <p>
-          <a href="https://www.facebook.com/hitchide-1803011653296477/?fref=ts" target="_blank" class="btn btn-danger"><%= fa_stacked_icon("facebook", base: "square-o") %>Feedback geben</a>
+          <a href="https://www.facebook.com/hitchide-1803011653296477/?fref=ts" target="_blank" class="btn btn-danger"><%= fa_stacked_icon("user", base: "square-o") %>Feedback geben</a>
         </p>
       </div>
     </div>
+
     <div class="row">
       <div class="col-md-12">
         <div class="card shadow">
@@ -35,29 +37,7 @@ title: "hitchi FAQ - die Mitfahrgelegenheit aus der Community - ohne Abzocke", d
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="card shadow">
-          <div class="card-top">
-            <h4 id="wiesonurfb">Wieso nur Facebook-Logins?</h4>
-          </div>
-          <div class="card-body">
-            <p>Der Facebook-Login hat gleich zwei Vorteile:
-              <ol>
-                <li>hitchi muss sich nicht um Passwörter und Konten kümmern. Wir erhalten folgende Daten von dir: Facebook-Name, Facebook-ID und die E-Mail-Adresse deines Facebook-Kontos. Dein Login wird auf den Servern von Facebook geprüft, hitchi hat KEINEN
-                  Zugriff auf dein Passwort.
-                </li>
-                <li>Fake-Accounts haben es deutlich schwerer und man kann sich direkt ein Bild vom potentiellen (Mit-)Fahrer machen. Das sorgt für erhöhte Sicherheit für dich!<br></li>
-              </ol>
-            </p>
-            <p>
-              <small>hitchi ist direkt aus den Gruppen für Mitfahrgelegenheiten auf Facebook entstanden. Entsprechend glauben wir als Entwickler, dass der Facebook-Login das geeignetste Mittel ist, um Einfachheit und Sicherheit unter einen Hut zu bringen.</small>
-            </p>
-          </div>
-          <div class="card-footer"><br></div>
-        </div>
-      </div>
-    </div>
+
     <div class="row">
       <div class="col-md-6">
         <div class="card shadow">
@@ -73,6 +53,7 @@ title: "hitchi FAQ - die Mitfahrgelegenheit aus der Community - ohne Abzocke", d
           <div class="card-footer"><br></div>
         </div>
       </div>
+
       <div class="col-md-6">
         <div class="card shadow">
           <div class="card-top">
@@ -85,21 +66,8 @@ title: "hitchi FAQ - die Mitfahrgelegenheit aus der Community - ohne Abzocke", d
         </div>
       </div>
     </div>
+
     <div class="row">
-      <div class="col-md-6">
-        <div class="card shadow">
-          <div class="card-top">
-            <h4>Ich kann mich nicht einloggen.</h4>
-          </div>
-          <div class="card-body">
-            <p>Du musst in den Einstellungen deines Browsers Cookies erlauben.</p>
-            <% if !current_user %>
-            <p><%= link_to 'Mit Facebook einloggen!', "/auth/facebook", class: "btn btn-primary" %></p>
-            <% end %>
-          </div>
-          <div class="card-footer"><br></div>
-        </div>
-      </div>
       <div class="col-md-6">
         <div class="card shadow">
           <div class="card-top">
@@ -111,8 +79,7 @@ title: "hitchi FAQ - die Mitfahrgelegenheit aus der Community - ohne Abzocke", d
           <div class="card-footer"><br></div>
         </div>
       </div>
-    </div>
-    <div class="row">
+
       <div class="col-md-6">
         <div class="card shadow">
           <div class="card-top">
@@ -127,5 +94,6 @@ title: "hitchi FAQ - die Mitfahrgelegenheit aus der Community - ohne Abzocke", d
         </div>
       </div>
     </div>
+
   </div>
 </div>

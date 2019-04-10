@@ -1,0 +1,41 @@
+version: "2.1"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - box_of_gems
+      - db
+    volumes_from:
+      - box_of_gems
+    restart: unless-stopped
+    privileged: true
+    networks:
+      - web
+      - default
+    expose:
+      - "3333"
+    labels:
+      - "traefik.docker.network=web"
+      - "traefik.enable=true"
+      - "traefik.hitchi.frontend.rule=Host:www.hitchi.de"
+      - "traefik.hitchi.port=3333"
+      - "traefik.hitchi.protocol=https"
+
+  db:
+    image: postgres:11.2-alpine
+    environment:
+      TZ: 'Europe/Berlin'
+    restart: always
+
+  box_of_gems:
+    image: busybox
+    restart: unless-stopped
+    volumes:
+      - /box_of_gems
+
+networks:
+  web:
+    external: true

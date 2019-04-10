@@ -1,11 +1,13 @@
 class MessagesController < ApplicationController
-  before_action :check_userpermission
+  before_action :authenticate_user!
   before_action :set_message, only: [:show, :edit, :update, :destroy, :markread]
 
   # GET /messages
   # GET /messages.json
   def index
-    @messages = Message.where("recipent = #{current_user.id} OR sender = #{current_user.id}").order(updated_at: :desc)
+    @messages = Message.
+      where("recipent = #{current_user.id} OR sender = #{current_user.id}").
+      order(updated_at: :desc)
   end
 
   # GET /messages/1
@@ -13,7 +15,7 @@ class MessagesController < ApplicationController
   def show
     if current_user.id != @message.sender
       if current_user.id != @message.recipent
-        redirect_to signout_path and return
+        redirect_to destroy_user_session_path, method: :delete and return
       else
         # TODO: use update_attribute?
         @message.recipentclick = true
@@ -30,7 +32,7 @@ class MessagesController < ApplicationController
   def markread
     if current_user.id != @message.sender
       if current_user.id != @message.recipent
-        redirect_to signout_path
+        redirect_to destroy_user_session_path, method: :delete
       else
         @message.recipentclick = true
         @message.save!
@@ -121,26 +123,26 @@ class MessagesController < ApplicationController
       @message = Message.find(params[:id])
       @answers = @message.answers
       # rescue if message isn't properly owned
-      redirect_to signout_path if (@message.sender != current_user.id && @message.recipent != current_user.id)
+      redirect_to destroy_user_session_path, method: :delete if (@message.sender != current_user.id && @message.recipent != current_user.id)
     end
 
     def check_session_permission
       if session[:expires_at] < Time.current
         session[:user_id] = nil
         session[:expires_at] = Time.now
-        redirect_to signout_path
+        redirect_to destroy_user_session_path, method: :delete
       end
     end
 
     def check_userpermission
       # always check for current_user status first
       if !current_user
-        redirect_to signout_path
+        redirect_to destroy_user_session_path, method: :delete
       else
         if session[:expires_at]
           check_session_permission
         else
-          redirect_to signout_path
+          redirect_to destroy_user_session_path, method: :delete
         end
       end
     end

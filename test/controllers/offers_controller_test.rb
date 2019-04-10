@@ -15,7 +15,7 @@ class OffersControllerTest < ActionController::TestCase
 
   test "not get account page when logged in" do
     get :overview
-    assert_redirected_to signout_path
+    assert_redirected_to destroy_user_session_path, method: :delete
   end
 
   test "should redirect on index" do

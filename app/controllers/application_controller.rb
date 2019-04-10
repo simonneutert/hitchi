@@ -1,15 +1,8 @@
 class ApplicationController < ActionController::Base
-  require 'will_paginate/array'
-
   protect_from_forgery with: :exception
   # loading the following functions as global helper_methods
-  helper_method :current_user
   helper_method :message_counter
   helper_method :hitchilogourl
-
-  def current_user
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
-  end
 
   def hitchilogourl
     @hitchilogourl = "https://www.hitchi.de/hitchi_logo.png"

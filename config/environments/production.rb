@@ -110,6 +110,6 @@ Rails.application.configure do
   :email => {
     :email_prefix => "[Error on Hitchi] ",
     :sender_address => %{"notifier" <hallo@hitchi.de>},
-    :exception_recipients => %w{simon.neutert+hitchierror@gmail.com}
+    :exception_recipients => Array.new(ENV['ERROR_RECIPIENTS'])
   }
 end

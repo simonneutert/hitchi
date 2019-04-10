@@ -1,9 +1,13 @@
 class OffersController < ApplicationController
+  include Pagy::Backend
+
+  before_action :authenticate_user!, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:overview, :new, :create, :get_messagecount]
+
   around_action :catch_not_found
   # security
   before_action :set_offer, only: [:show, :edit, :update, :destroy]
-  before_action :check_userpermission_action, only: [:edit, :update, :destroy]
-  before_action :check_userpermission_login, only: [:overview, :new, :create, :get_messagecount]
+
   before_action :max_offers, only: [:new, :create]
   # define the searchresults per page
   before_action :searchresultspp, only: [:search, :find]
@@ -81,7 +85,11 @@ class OffersController < ApplicationController
     check_date_params("search") # sets @searchdate
     if params[:fahrtsuche].present? || params[:zielsuche].present?
       search = OffersSearch.new(@searchdate, params[:fahrtsuche], params[:zielsuche], show_seeks=false)
-      @offers = search.offers
+      offers = search.offers
+      def pagy_get_items(array, pagy)
+        array[pagy.offset, pagy.items]
+      end
+      @pagy, @offers = pagy(offers)
     else # only on empty search
       @searchdate = Date.today
       offer_count = Offer.where(active: true, seek: false).size
@@ -100,7 +108,11 @@ class OffersController < ApplicationController
     check_date_params("find")
     if params[:fahrtsuche].present? || params[:zielsuche].present?
       search = OffersSearch.new(@searchdate, params[:fahrtsuche], params[:zielsuche], show_seeks=true)
-      @offers = search.offers
+      offers = search.offers
+      def pagy_get_items(array, pagy)
+        array[pagy.offset, pagy.items]
+      end
+      @pagy, @offers = pagy(offers)
     end
   end #end of find
 
@@ -217,40 +229,6 @@ class OffersController < ApplicationController
     def max_offers
       if current_user.offers.pluck(:id).count >= 6
         redirect_to offers_overview_path, notice: "Das geht leider nicht, Du kannst maximal 6 hitchis erstellen."
-      end
-    end
-
-    def redirect_unauthed
-      if !current_user
-        redirect_to signout_path
-        return
-      end
-    end
-
-    def check_userpermission_login
-      if session[:expires_at] && session[:expires_at] < Time.current
-        session[:user_id] = nil
-        session[:expires_at] = Time.now
-      elsif session[:expires_at] && session[:expires_at] > (Time.current - 30.minutes)
-        session[:expires_at] = (Time.current + 25.minutes)
-      end
-      if !current_user
-        redirect_to signout_path
-        return
-      end
-    end
-
-    def check_userpermission_action
-      if session[:expires_at] && session[:expires_at] < Time.current
-        session[:user_id] = nil
-        session[:expires_at] = Time.now
-      end
-      if current_user && current_user.id != @offer.user_id
-        redirect_to signout_path, notice: "Was du da tun willst, gehört sich nicht. Es ist einfach nicht richtig, anderer Leute Anzeigen zu editieren."
-        return
-      elsif !current_user
-        redirect_to signout_path
-        return
       end
     end
 

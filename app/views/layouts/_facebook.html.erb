@@ -1,8 +1,8 @@
 <div class="facebooklogin">
 <% if current_user %>
-  <strong><%= current_user.name %></strong>
-  <%= link_to "ausloggen?", signout_path, id: "sign_out" %>
+  <strong><%= current_user.email %></strong>
+  <%= link_to "ausloggen?", destroy_user_session_path, method: :delete, id: "sign_out" %>
 <% else %>
-  <%= link_to "facebook login", "/auth/facebook", id: "sign_in" %>
+  <%= link_to "facebook login", new_user_session_path %>
 <% end %>
 </div>

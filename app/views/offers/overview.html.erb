@@ -3,7 +3,7 @@
 </h1>
 
 <p class="text-center hidden-xs">
-    <%= link_to fa_stacked_icon("power-off", base: "square-o") + "ausloggen", signout_path, id: "sign_out", class: "btn btn-danger btn-xs" %></p>
+    <%= link_to fa_stacked_icon("power-off", base: "square-o") + "ausloggen", destroy_user_session_path, method: :delete, id: "sign_out", class: "btn btn-danger btn-xs" %></p>
 
 <%= render 'offers/overview_offers' %>
 <%= render 'offers/overview_seek' %>
@@ -13,6 +13,6 @@
         <br>
 
         <p class="text-center">
-            <%= link_to fa_stacked_icon("power-off", base: "square-o") + " ausloggen", signout_path, id: "sign_out", class: "btn btn-danger" %></p>
+            <%= link_to fa_stacked_icon("power-off", base: "square-o") + " ausloggen", destroy_user_session_path, method: :delete, id: "sign_out", class: "btn btn-danger" %></p>
     </div>
 </div>

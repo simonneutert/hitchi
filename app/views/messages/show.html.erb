@@ -13,7 +13,7 @@
     <div class="card shadow">
       <div class="card-top">
         <p>
-          <strong><%= link_to User.find(@message.sender).name, offers_linkout_path(@message.offer.id, User.find(@message.sender).uid), target: '_blank' %></strong>
+          Angebot
         </p>
       </div>
 
@@ -41,7 +41,6 @@
     <div class="card card-answer shadow">
       <div class="card-body-msg">
         <p>
-          <strong><%= link_to User.find(answer.sender).name, offers_linkout_path(@message.offer.id, User.find(answer.sender).uid), target: '_blank' %></strong>:
           <%= answer.content %></p>
       </div>
       <div class="card-footer">

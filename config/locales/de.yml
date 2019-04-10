@@ -22,3 +22,7 @@
 de:
   navigation:
     link_clients: "Kunden"
+  pagy:
+    nav:
+      prev: zurück
+      next: vor

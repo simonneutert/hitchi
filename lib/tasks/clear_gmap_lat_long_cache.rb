@@ -18,7 +18,7 @@ task :clear_gmap_lat_long_cache => :environment do
 
   # scheduler set to hourly rake task execution
   # but skips if time doesn't match ;-)
-  return unless [0, 18].include?(Time.now.zone.hour)
+  return unless [0, 18].include? Time.now.zone.hour
   destroyer(Departure, Offer, :departure_id)
   destroyer(Destination, Offer, :destination_id)
   [Destination, Departure].map { |e| clearer(e) }

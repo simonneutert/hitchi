@@ -1,0 +1,65 @@
+<div class="row">
+  <div class="col-xs-12">
+<h1>Übersicht der aktiven Angebote</h1>
+
+<table id="adTable" class="table table-striped tablesorter">
+  <thead>
+    <tr>
+      <th>Startort</th>
+      <th>Zielort</th>
+      <th>Datum</th>
+      <th>Uhrzeit</th>
+      <th>Beschreibung</th>
+      <th>Zwischenstopps</th>
+      <th>Clicks</th>
+      <th>Views</th>
+
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @admin_offers.each do |offer| %>
+      <tr>
+        <td><%= offer.departurelocal %></td>
+        <td><%= offer.destinationlocal %></td>
+        <td><%= offer.departuredate %></td>
+        <td><%= offer.departuretime %></td>
+        <td><%= offer.description %></td>
+        <td><%= offer.between_stops %></td>
+        <td><%= offer.clickcounter %></td>
+        <td><%= offer.viewcounter %></td>
+        <td><%= link_to 'anzeigen', offer %></td>
+        <td><%= link_to 'bearbeiten', edit_admins_offer_path(offer) %></td>
+        <td><%= link_to 'löschen', admins_offer_path(offer), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<!-- pager -->
+<div id="pager" class="ts-pager">
+  <form>
+    <span class="first"><%= fa_icon("fast-backward") %></span>
+    <span class="prev"><%= fa_icon("backward") %></span>
+    <span class="pagedisplay"></span> <!-- this can be any element, including an input -->
+    <span class="next"><%= fa_icon("forward") %></span>
+    <span class="last"><%= fa_icon("fast-forward") %></span>
+    <select class="pagesize">
+      <option value="10">10</option>
+      <option value="20">20</option>
+      <option value="30">30</option>
+      <option value="40">40</option>
+      <option value="all">Alle Zeilen</option>
+    </select>
+  </form>
+</div>
+<br>
+
+</div>
+</div>
+<%= link_to 'Admin Dashbaord', admins_dashboards_path, class: "btn btn-danger" %>
+
+<hr>
+<% if admin_signed_in? %>
+   <%= link_to('logout', destroy_admin_session_path, method: :delete, class: "btn btn-info") %>
+<% end %>

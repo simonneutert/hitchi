@@ -4,13 +4,24 @@
         <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
     </head>
     <body>
-        <h1>hitchi.de:
-            <% if @matches.count > 1 %>Diese Fahrten könnten zu dir passen,<%else%>Eine Fahrt könnte zu dir passen,<%end%>
-            <%= @user.name %>!</h1>
-        <p><small>
-            hitchi ist aus der Mitfahrgelegenheit-Community auf Facebook entstanden!</small><br>
+        <h1>
+          hitchi.de:
+          <% if @matches.count > 1 %>
+            Diese Fahrten könnten zu dir passen,
+          <%else%>
+            Eine Fahrt könnte zu dir passen,
+          <%end%>
+          !
+        </h1>
+
+        <p>
+          <small>
+            hitchi ist aus der Mitfahrgelegenheit-Community auf Facebook entstanden!
+          </small><br>
         </p>
+
         <br>
+        
         <% @matches.each do |match| %>
         <p>
             <strong>Abfahrt:

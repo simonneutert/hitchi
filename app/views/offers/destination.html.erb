@@ -3,7 +3,6 @@
 <div class="row">
     <% @offers.each do |offer| %>
     <div class="col-md-4">
-        <%= link_to("http://facebook.com/" + @users.find(offer.user_id).uid.to_s) do %>
         <div class="card">
             <div class="card-top">
                 <p>
@@ -26,8 +25,6 @@
 
             </div>
         </div>
-        <% end %>
-
     </div>
     <% end %>
 </div>

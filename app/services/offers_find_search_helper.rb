@@ -35,6 +35,7 @@ module OffersFindSearchHelper
       bs.class_eval do
         attr_accessor :truebetweenstop
       end
+
       bs.truebetweenstop = false
       bsa = bs.between_stops.gsub(/, /, ',').downcase
       bsa = bsa.split(',')
@@ -46,6 +47,7 @@ module OffersFindSearchHelper
         bs.truebetweenstop = true
       end
     end
+    
     @between_stops = @between_stops.reject { |offer| offer.truebetweenstop == false }
   end
 end

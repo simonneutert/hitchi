@@ -1,0 +1,101 @@
+<hr>
+<%= form_for(@admin_seek, :url => admin_seek_path(@admin_seek)) do |f| %>
+<% if @admin_offer.errors.any? %>
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <div id="error_explanation">
+            <!-- <h2><%= @offer.errors.count %>
+                Fehler sind noch zu beheben:</h2> -->
+            <ul>
+                <% @admin_offer.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+                <% end %>
+            </ul>
+        </div>
+    </div>
+</div>
+<% end # of errors %>
+<div class="row">
+    <div class="col-md-3 col-md-offset-3">
+        <div class="field form-group">
+            <%= f.label :departurelocal, 'Abfahrtsort' %><br>
+            <%= f.text_field :departurelocal, class: "form-control" %>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="fiel form-group">
+            <%= f.label :destinationlocal, 'Zielort' %><br>
+            <%= f.text_field :destinationlocal, class: "form-control" %>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-3 col-md-offset-3">
+        <div class="fiel form-group">
+            <%= f.label :departuredate, 'Datum <small>(maximal 6 Monate im Voraus)</small>'.html_safe %><br>
+            <%= f.date_select :departuredate, start_year: Date.today.year, end_year: (Date.today + 6.months).year, class: "form-control" %>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="fiel form-group">
+            <%= f.label :departuretime, 'Uhrzeit' %><br>
+            <%= f.text_field :departuretime, class: "form-control" %>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="fiel form-group">
+            <%= f.label :description, 'Zusätzliche Angaben (140 Zeichen)' %><br>
+            <%= f.text_area :description, class: "form-control", maxlength: '140' %>
+        </div>
+    </div>
+</div>
+
+<div class="row between_stops">
+  <div class="col-md-6 col-md-offset-3">
+      <div class="fiel form-group">
+          <%= f.label :between_stops, 'Zwischenstopps (getrennt durch Kommas, nach Abfolge auf Strecke geordnet)' %><br>
+          <%= f.text_field :between_stops, class: "form-control" %>
+      </div>
+  </div>
+</div>
+
+<div class="row">
+    <div class="col-md-3 col-md-offset-3">
+        <div class="field form-group checkbox">
+            <%= f.label :seek do %>
+              <%= f.check_box :seek, class: "checkbox text-right" %>als Gesuch speichern
+            <% end %>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <% if f.object.persisted? %>
+        <div class="field form-group checkbox">
+            <%= f.label :active do %>
+            <%= f.check_box :active, class: "checkbox text-right" %>aktiv
+            <% end %>
+        </div>
+        <% end %>
+    </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+      <div class="field form-group checkbox">
+          <%= f.label :rules do %>
+            <%= f.check_box :rules, class: "checkbox text-right" %>Ich erkläre mich mit den <%= link_to 'Allgemeinen Geschäftsbedingungen', home_agbdatenschutz_path, target: "_blank" %> sowie den <%= link_to 'Datenschutzbestimmungen', home_agbdatenschutz_path, target: "_blank" %> von hitchi.de einverstanden.
+          <% end %>
+      </div>
+  </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="actions">
+            <%= link_to 'zurück', admin_dashboards_path, class: "btn btn-danger pull-left" %>
+            <%= f.submit 'Fahrt speichern', class: "btn btn-success pull-right", id: "offersubmitbutton" %>
+        </div>
+    </div>
+</div>
+<% end %>

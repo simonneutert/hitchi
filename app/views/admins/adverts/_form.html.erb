@@ -1,0 +1,77 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+<%= nested_form_for(@advert) do |f| %>
+  <% if @advert.errors.any? %>
+    <div id="error_explanation">
+      <!-- <h2><%= pluralize(@advert.errors.count, "error") %> prohibited this advert from being saved:</h2> -->
+
+      <ul>
+      <% @advert.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.label :title, 'Titel der Werbung' %><br>
+    <%= f.text_field :title, class: "form-control" %>
+  </div>
+  <div class="field form-group">
+    <%= f.label :client, 'Kunde / Firma' %><br>
+    <%= f.text_field :client, class: "form-control" %>
+  </div>
+  <div class="field form-group">
+    <%= f.label :linkurl, 'Link zum Werbetreibenden' %><br>
+    <%= f.text_field :linkurl, class: "form-control" %>
+  </div>
+  <div class="field form-group">
+    <%= f.label :city, 'Stadt' %><br>
+    <%= f.text_field :city, class: "form-control" %>
+  </div>
+  <!-- <div class="field form-group">
+    <%= f.label :viewcount %><br>
+    <%= f.number_field :viewcounter, class: "form-control" %>
+  </div>
+  <div class="field form-group">
+    <%= f.label :clickcount %><br>
+    <%= f.number_field :clickcounter, class: "form-control" %>
+  </div> -->
+  <div class="row">
+    <div class="col-sm-6">
+  <div class="field form-group">
+    <%= f.label :begin_ad, 'Startdatum' %><br>
+    <%= f.date_select :begin_ad, class: "form-control" %>
+  </div>
+</div>
+<div class="col-sm-6">
+  <div class="field form-group">
+    <%= f.label :end_ad, 'Enddatum' %><br>
+    <%= f.date_select :end_ad, default: (Date.today + 2.weeks), class: "form-control" %>
+  </div>
+</div>
+</div>
+
+
+
+
+<%= f.fields_for(:advertimage) do |advert_form| %>
+<%= advert_form.hidden_field(:image_cache) %>
+<%= advert_form.file_field(:image) %>
+    <% if advert_form.object.image_url %>
+
+      <%= cl_image_tag f.object.advertimage.image_url, class: "img-responsive" %>
+
+      <p><%= advert_form.link_to_remove "Bild löschen", class: "button tiny btn-remove" %></p>
+
+    <% end %>
+
+<% end %>
+<%= f.link_to_add "Bild hinzufügen", :advertimage %>
+
+<div class="actions">
+    <%= f.submit "Speichern", data: { disable_with: "veröffentlichen" } %>
+  </div>
+</div>
+</div>
+
+<% end %>

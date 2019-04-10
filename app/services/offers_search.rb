@@ -8,6 +8,7 @@
 
 class OffersSearch
   include OffersFindSearchHelper
+  
   attr_accessor :offers, :searchdate, :between_stops
   def initialize(searchdate, departure, destination, show_seeks=false)
     @offers

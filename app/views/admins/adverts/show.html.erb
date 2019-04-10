@@ -1,0 +1,46 @@
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3">
+<p>
+  <strong>Title:</strong>
+  <%= @advert.title %>
+</p>
+
+<p>
+  <strong>Client:</strong>
+  <%= @advert.client %>
+</p>
+
+<p>
+  <strong>Linkurl:</strong>
+  <%= @advert.linkurl %>
+</p>
+
+<p>
+  <strong>Viewcount:</strong>
+  <%= @advert.viewcounter %>
+</p>
+
+<p>
+  <strong>Clickcount:</strong>
+  <%= @advert.clickcounter %>
+</p>
+
+<p>
+  <strong>Begin ad:</strong>
+  <%= @advert.begin_ad %>
+</p>
+
+<p>
+  <strong>End ad:</strong>
+  <%= @advert.end_ad %>
+</p>
+<% if @advert.advertimage %>
+<p>
+  <strong>Image:</strong>
+  <%= cl_image_tag @advert.advertimage.image, class: "img-responsive" %>
+</p>
+<% end %>
+
+<%= link_to 'bearbeiten', edit_advert_path(@advert) %> |
+<%= link_to 'zurück', admins_adverts_path %>
+</div></div>

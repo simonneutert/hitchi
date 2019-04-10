@@ -21,12 +21,10 @@ gem 'nokogiri'
 gem "em-synchrony"
 gem 'em-http-request'
 
-gem 'omniauth-oauth2'
-gem 'omniauth-facebook'
 gem 'sprockets'
 gem 'bootstrap-sass'
 gem 'bootstrap-datepicker-rails'
-gem 'will_paginate', '~> 3.0.5'
+gem 'pagy'
 gem 'metamagic'
 
 gem 'passenger'
@@ -38,6 +36,7 @@ gem 'nested_form'
 gem "font-awesome-rails"
 gem 'clipboard-rails'
 gem 'devise'
+gem 'devise-i18n'
 gem 'carrierwave', '~> 1.2.3'
 gem 'cloudinary'
 gem 'file_validators'

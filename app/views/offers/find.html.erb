@@ -37,6 +37,6 @@ hitschi hitchi hitji), og: { title: "hitchi - Suche deine Mitfahrgelegenheit in 
 <%end%>
 <% if @offers.present? %>
 <div class="text-center">
-    <%#= will_paginate @posts, previous_label: "zurück",next_label: "weiter", class: "flickr_pagination" %>
+  <%= pagy_nav_bootstrap(@pagy).html_safe if @pagy %>
 </div>
 <% end %>

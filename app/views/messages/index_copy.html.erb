@@ -30,7 +30,6 @@
 <div class="card shadow answer">
   <div class="card-top">
     <p><small>Letzte Antwort:</small></p>
-    <p><strong><%= link_to User.find(message.answers.last.sender).name, offers_linkout_path(message.offer.id, User.find(message.answers.last.sender).uid), target: '_blank' %></strong></p>
   </div>
 
   <div class="card-body-msg">
@@ -66,7 +65,6 @@
 <div class="card shadow answer">
   <div class="card-top">
     <p><small>Letzte Antwort:</small></p>
-    <p><strong><%= link_to User.find(message.answers.last.sender).name, offers_linkout_path(message.offer.id, User.find(message.answers.last.sender).uid), target: '_blank' %></strong></p>
   </div>
 
   <div class="card-body-msg">

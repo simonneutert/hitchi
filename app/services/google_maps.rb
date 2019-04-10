@@ -14,12 +14,8 @@ module GoogleMaps
       @maptype = "roadmap"
     end
 
-    def width(width)
+    def set_dimensions(width, height)
       @width = width
-      self
-    end
-
-    def height(height)
       @height = height
       self
     end

@@ -1,7 +1,7 @@
 module OffersHelper
   include Pagy::Frontend
 
-  Pagy::Frontend::I18N.load(file: Rails.root.join('config', 'locales', 'de.yml'), language:'de')
+  # Pagys::I18N.load(file: Rails.root.join('config', 'locales', 'de.yml'), language:'de')
 
   # Pagination for bootstrap: it returns the html with the series of links to the pages
   def pagy_nav_bootstrap(pagy)

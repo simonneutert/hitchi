@@ -154,14 +154,12 @@ GEM
       mini_portile2 (~> 2.4.0)
     orm_adapter (0.5.0)
     pagy (0.22.0)
-    passenger (6.0.2)
-      rack
-      rake (>= 0.8.1)
     pg (1.1.4)
     pry (0.11.3)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
     public_suffix (3.0.1)
+    puma (3.12.1)
     rack (2.0.7)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
@@ -285,9 +283,9 @@ DEPENDENCIES
   nested_form
   nokogiri
   pagy
-  passenger
   pg
   pry
+  puma
   rails (~> 5.1)
   rails-controller-testing
   rails-jquery-autocomplete

@@ -27,7 +27,7 @@ gem 'bootstrap-datepicker-rails'
 gem 'pagy'
 gem 'metamagic'
 
-gem 'passenger'
+gem 'puma'
 
 gem 'exception_notification'
 

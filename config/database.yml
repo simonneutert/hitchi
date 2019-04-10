@@ -83,6 +83,6 @@ production:
   <<: *default
   pool: <%= Integer(ENV["DB_POOL"] || ENV['RAILS_MAX_THREADS'] || 5) %>
   database: hitchi_production
-  username: hitchi
-  password: <%= ENV['hitchi_DATABASE_PASSWORD'] %>
+  # username: hitchi
+  # password: <%= ENV['hitchi_DATABASE_PASSWORD'] %>
   host: db # for docker setup

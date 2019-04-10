@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.5.5'
 
-gem 'dotenv-rails', groups: [:development, :test]
+gem 'dotenv-rails', groups: [:production, :development, :test]
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.0'

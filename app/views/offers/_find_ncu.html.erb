@@ -1,0 +1,57 @@
+<% if @offers.present? %>
+<br>
+<div class="row">
+  <% @offers.each_slice(2) do |offers| %>
+  <% offers.each do |offer| %>
+  <% cache offer do %>
+  <div class="col-md-6
+    <% if offer.diameterdep %><%= offer.diameterdep %> <% end %>
+    <% if offer.diameterdest %><%= offer.diameterdest %> <% end %>
+    <% if offer.departuredate == @searchdate + 1.days %>plustag <% end %>
+    <% if offer.departuredate >= @searchdate + 2.days %>plusplustag <% end %>
+    <% if offer.departuredate == @searchdate - 1.days %>minustag<% end %>">
+      <div class="card shadow">
+          <div class="card-top">
+              <p>
+                  <strong>
+                      <% if offer.seek == true %>
+                      Suche:
+                      <% end %><%= offer.departuredate.strftime("%d.%m.%Y") %></strong><br>
+                  <strong><%= offer.departurelocal %></strong>
+                  nach
+                  <strong><%= offer.destinationlocal %></strong>
+              </p>
+          </div>
+          <div class="card-body">
+              <p>
+                  <strong>Zeit:&nbsp;</strong><%= offer.departuretime %></p>
+              <p><% if offer.description? %><%= truncate(offer.description, length: 130) %>
+              <% else %><br>
+                  <span class="text-center">Keine zusätzlichen Infos</span><% end %></p>
+          </div>
+          <div class="card-footer">
+              <p><% if !offer.between_stops.blank? %>
+                  <strong>Über:</strong>
+                  <%= offer.between_stops %>
+              <% else %><br><% end %></p>
+              <p class="text-right"><%#= link_to fa_icon("question"), home_explain_path, class: "btn btn-primary text-right", target: "_blank" %>
+                  <%= link_to '<span class="glyphicon glyphicon-plus"></span>'.html_safe, offers_mitfahrgelegenheit_path(offer), class: "btn btn-info text-right" %></p>
+          </div>
+      </div>
+
+  </div>
+  <% end %>
+  <% end %>
+  <% end %>
+</div>
+<% end %>
+
+<% if params[:fahrtsuche].present? || params[:zielsuche].present? %>
+<% if !@offers.present? %>
+<h2 class="text-center text-lighter">Leider keine Treffer.</h2>
+<% end %>
+<% else %>
+<% if params[:datumsuche].present? %>
+<h2 class="text-center text-lighter">Du musst erst deine Eingaben machen.</h2>
+<% end %>
+<% end %>

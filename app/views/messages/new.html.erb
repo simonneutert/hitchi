@@ -1,0 +1,8 @@
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3">
+    <h4 class="text-center"><%= @offer.departuredate.strftime("%d.%m.%Y").to_s + " von " + @offer.departurelocal + " nach " + @offer.destinationlocal %></h4>
+    <h4 class="text-center">Schreibe
+      <%= User.find(@offer.user_id).name %></h4>
+    <%= render 'form' %>
+  </div>
+</div>

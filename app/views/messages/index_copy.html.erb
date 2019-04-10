@@ -1,0 +1,91 @@
+<h1 class="text-center">Deine Nachrichten</h1>
+<div class="row visible-xs">
+  <div class="col-xs-6">
+    <a href="#inbox" class="btn btn-primary pull-right">Eingang</a>
+  </div>
+  <div class="col-xs-6">
+    <a href="#outbox" class="btn btn-primary pull-left">Ausgang</a>
+  </div>
+</div>
+<div class="row">
+<% if @messagesout.any? %>
+<div class="col-sm-6">
+  <h4 id="outbox">Von mir</h4>
+<% @messagesout.each do |message| %>
+<div class="card shadow">
+  <div class="card-top">
+    <p><strong><%= User.find(message.sender).name %></strong> an <strong><%= User.find(message.recipent).name %></strong></p>
+  </div>
+
+  <div class="card-body-msg">
+    <p><%= message.content %></p>
+  </div>
+
+  <div class="card-footer">
+    <p>Abfahrt: <strong><%= message.offer.departuredate.strftime("%d.%m.%Y").to_s %></strong> von <strong><%= message.offer.departurelocal %></strong> nach <strong><%= message.offer.destinationlocal %></strong></p>
+    <p class="text-right"><%= link_to '<span class="glyphicon glyphicon-remove"></span>'.html_safe, message, method: :delete, data: { confirm: 'Die gesamte Konversation wird gelöscht, auch für deinen Gegenüber. Bist du sicher?' }, class:"btn btn-danger" %> <%= link_to fa_icon("reply"), new_message_answer_path(message), class: "btn btn-primary" %> <%= link_to fa_icon("comments"), message, class:"btn btn-info" %></p>
+  </div>
+</div>
+<% if message.answers.any? %>
+<div class="card shadow answer">
+  <div class="card-top">
+    <p><small>Letzte Antwort:</small></p>
+    <p><strong><%= link_to User.find(message.answers.last.sender).name, offers_linkout_path(message.offer.id, User.find(message.answers.last.sender).uid), target: '_blank' %></strong></p>
+  </div>
+
+  <div class="card-body-msg">
+    <p><%= message.answers.last.content %></p>
+  </div>
+</div>
+<%end%>
+<hr class="hroffersplit">
+<% end #iterate over messages %>
+</div>
+<% else %>
+<h4 class="text-center" id="outbox"><medium>Du hast keine Nachrichten gesendet</medium></h4>
+<% end #of if %>
+<% if @messagesin.any? %>
+<div class="col-sm-6">
+  <h4 id="inbox">Empfangene Nachrichten</h4>
+<% @messagesin.each do |message| %>
+<div class="card shadow">
+  <div class="card-top">
+    <p><strong><%= User.find(message.sender).name %></strong> an <strong><%= User.find(message.recipent).name %></strong></p>
+  </div>
+
+  <div class="card-body-msg">
+    <p><%= message.content %></p>
+  </div>
+
+  <div class="card-footer">
+    <p>Abfahrt: <strong><%= message.offer.departuredate.strftime("%d.%m.%Y").to_s %></strong> von <strong><%= message.offer.departurelocal %></strong> nach <strong><%= message.offer.destinationlocal %></strong></p>
+    <p class="text-right"><%= link_to '<span class="glyphicon glyphicon-remove"></span>'.html_safe, message, method: :delete, data: { confirm: 'Die gesamte Konversation wird gelöscht, auch für deinen Gegenüber. Bist du sicher?' }, class:"btn btn-danger" %> <%= link_to fa_icon("reply"), new_message_answer_path(message), class: "btn btn-primary" %> <%= link_to fa_icon("comments"), message, class:"btn btn-info" %></p>
+  </div>
+</div>
+<% if message.answers.any? %>
+<div class="card shadow answer">
+  <div class="card-top">
+    <p><small>Letzte Antwort:</small></p>
+    <p><strong><%= link_to User.find(message.answers.last.sender).name, offers_linkout_path(message.offer.id, User.find(message.answers.last.sender).uid), target: '_blank' %></strong></p>
+  </div>
+
+  <div class="card-body-msg">
+    <p><%= message.answers.last.content %></p>
+  </div>
+</div>
+<%end%>
+<hr class="hroffersplit">
+<% end #iterate over messages %>
+</div>
+<% else %>
+<hr class="hroffersplit visible-xs">
+<h4 class="text-center" id="inbox"><medium>Du hast keine Nachrichten im Eingang</medium></h4>
+<hr class="hroffersplit visible-xs">
+<% end #of if %>
+</div>
+<div class="row">
+<div class="col-sm-6 col-sm-offset-3">
+<p class="text-center"><strong>Wichtig! </strong>hitchi koppelt Nachrichten und Anzeigen. Wird die Anzeige gelöscht, werden auch die dazugehörigen Nachrichten gelöscht!</p>
+<p class="text-center">So herrscht hier immer Ordnung und du behältst die Übersicht :)</p>
+</div>
+</div>

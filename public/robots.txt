@@ -1,0 +1,70 @@
+# See http://www.robotstxt.org/robotstxt.html for documentation on how to use the robots.txt file
+#
+# To ban all spiders from the entire site uncomment the next two lines:
+# User-agent: *
+# Disallow: /
+
+User-agent: Googlebot
+Disallow: /konto
+Disallow: /adverts
+Disallow: /admins
+Disallow: /sessions
+Disallow: /admin_dashboards
+Disallow: /admin_offers
+Disallow: /admin_seeks
+Disallow: /suchen
+Disallow: /finden
+Disallow: /fbweiterleitung
+Disallow: /weiterleitung
+
+User-agent: Slurp
+Disallow: /konto
+Disallow: /adverts
+Disallow: /admins
+Disallow: /sessions
+Disallow: /admin_dashboards
+Disallow: /admin_offers
+Disallow: /admin_seeks
+Disallow: /suchen
+Disallow: /finden
+Disallow: /fbweiterleitung
+Disallow: /weiterleitung
+
+User-agent: YahooSeeker/M1A1-R2D2
+Disallow: /konto
+Disallow: /adverts
+Disallow: /admins
+Disallow: /sessions
+Disallow: /admin_dashboards
+Disallow: /admin_offers
+Disallow: /admin_seeks
+Disallow: /suchen
+Disallow: /finden
+Disallow: /fbweiterleitung
+Disallow: /weiterleitung
+
+User-agent: Teoma
+Disallow: /konto
+Disallow: /adverts
+Disallow: /admins
+Disallow: /sessions
+Disallow: /admin_dashboards
+Disallow: /admin_offers
+Disallow: /admin_seeks
+Disallow: /suchen
+Disallow: /finden
+Disallow: /fbweiterleitung
+Disallow: /weiterleitung
+
+User-agent: msnbot
+Disallow: /konto
+Disallow: /adverts
+Disallow: /admins
+Disallow: /sessions
+Disallow: /admin_dashboards
+Disallow: /admin_offers
+Disallow: /admin_seeks
+Disallow: /suchen
+Disallow: /finden
+Disallow: /fbweiterleitung
+Disallow: /weiterleitung

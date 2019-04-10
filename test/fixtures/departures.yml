@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+mayence:
+  name: Mainz
+  latitude: 40.5
+  longitude: 100.5
+
+heilbronn:
+  name: Heilbronn
+  latitude: 40.5
+  longitude: 100.5

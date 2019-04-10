@@ -1,0 +1,76 @@
+.btn-active {
+  color: #fff;
+  background-color: #7434b5;
+  border-color: #682ea1;
+}
+/* line 11, /Users/simonneutert/.rvm/gems/ruby-2.2.1/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/mixins/_buttons.scss */
+.btn-active:focus, .btn-active.focus {
+  color: #fff;
+  background-color: #5b288e;
+  border-color: #28123e;
+}
+/* line 17, /Users/simonneutert/.rvm/gems/ruby-2.2.1/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/mixins/_buttons.scss */
+.btn-active:hover {
+  color: #fff;
+  background-color: #5b288e;
+  border-color: #492072;
+}
+/* line 22, /Users/simonneutert/.rvm/gems/ruby-2.2.1/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/mixins/_buttons.scss */
+.btn-active:active, .btn-active.active, .open > .btn-active.dropdown-toggle {
+  color: #fff;
+  background-color: #5b288e;
+  border-color: #492072;
+}
+/* line 29, /Users/simonneutert/.rvm/gems/ruby-2.2.1/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/mixins/_buttons.scss */
+.btn-active:active:hover, .btn-active:active:focus, .btn-active:active.focus, .btn-active.active:hover, .btn-active.active:focus, .btn-active.active.focus, .open > .btn-active.dropdown-toggle:hover, .open > .btn-active.dropdown-toggle:focus, .open > .btn-active.dropdown-toggle.focus {
+  color: #fff;
+  background-color: #492072;
+  border-color: #28123e;
+}
+/* line 37, /Users/simonneutert/.rvm/gems/ruby-2.2.1/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/mixins/_buttons.scss */
+.btn-active:active, .btn-active.active, .open > .btn-active.dropdown-toggle {
+  background-image: none;
+}
+/* line 45, /Users/simonneutert/.rvm/gems/ruby-2.2.1/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/mixins/_buttons.scss */
+.btn-active.disabled:hover, .btn-active.disabled:focus, .btn-active.disabled.focus, .btn-active[disabled]:hover, .btn-active[disabled]:focus, .btn-active[disabled].focus, fieldset[disabled] .btn-active:hover, fieldset[disabled] .btn-active:focus, fieldset[disabled] .btn-active.focus {
+  background-color: #7434b5;
+  border-color: #682ea1;
+}
+.btn-passive {
+  color: #000;
+  /*background-color: #7434b5;*/
+  border-color: #682ea1;
+}
+/* line 11, /Users/simonneutert/.rvm/gems/ruby-2.2.1/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/mixins/_buttons.scss */
+.btn-passive:focus, .btn-passive.focus {
+  color: #fff;
+  background-color: #ccc;
+  border-color: #28123e;
+}
+/* line 17, /Users/simonneutert/.rvm/gems/ruby-2.2.1/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/mixins/_buttons.scss */
+.btn-passive:hover {
+  color: #fff;
+  background-color: #5b288e;
+  border-color: #492072;
+}
+/* line 22, /Users/simonneutert/.rvm/gems/ruby-2.2.1/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/mixins/_buttons.scss */
+.btn-passive:active, .btn-passive.active, .open > .btn-passive.dropdown-toggle {
+  color: #fff;
+  background-color: #5b288e;
+  border-color: #492072;
+}
+/* line 29, /Users/simonneutert/.rvm/gems/ruby-2.2.1/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/mixins/_buttons.scss */
+.btn-passive:active:hover, .btn-passive:active:focus, .btn-passive:active.focus, .btn-passive.active:hover, .btn-passive.active:focus, .btn-passive.active.focus, .open > .btn-passive.dropdown-toggle:hover, .open > .btn-passive.dropdown-toggle:focus, .open > .btn-passive.dropdown-toggle.focus {
+  color: #fff;
+  background-color: #492072;
+  border-color: #28123e;
+}
+/* line 37, /Users/simonneutert/.rvm/gems/ruby-2.2.1/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/mixins/_buttons.scss */
+.btn-passive:active, .btn-passive.active, .open > .btn-passive.dropdown-toggle {
+  background-image: none;
+}
+/* line 45, /Users/simonneutert/.rvm/gems/ruby-2.2.1/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/mixins/_buttons.scss */
+.btn-passive.disabled:hover, .btn-passive.disabled:focus, .btn-passive.disabled.focus, .btn-passive[disabled]:hover, .btn-passive[disabled]:focus, .btn-passive[disabled].focus, fieldset[disabled] .btn-passive:hover, fieldset[disabled] .btn-passive:focus, fieldset[disabled] .btn-passive.focus {
+  background-color: #7434b5;
+  border-color: #682ea1;
+}

@@ -1,0 +1,9 @@
+<% if flash[:error] %>
+<div class="container-fluid error-overlay error-click">
+  <p id="error" class="text-center">
+    <%= flash[:error] %>
+
+  </p>
+  <p class="text-center"><span class="btn btn-danger">okay</span></p>
+</div>
+<% end %>

@@ -1,0 +1,32 @@
+<div class="row narrowrow">
+  <div class="col-md-10 col-md-offset-1 col-sm-12">
+    <hr class="hroffersplit">
+    <h2>Gesucht? Gefunden!</h2>
+    <p>hitchi schlägt dir in deiner Kontoübersicht passende Anzeigen oder Gesuche vor. Das Leben kann so einfach sein.</p>
+    <div class="row">
+      <div class="col-md-4 col-md-offset-1 card shadow">
+
+        <div class="card-top">
+          <strong><%= @match_offer.departurelocal %> nach <%= @match_offer.destinationlocal %></strong>
+        </div>
+        <div class="card-body">
+          <%= truncate(@match_offer.description, length: 130) %>
+        </div>
+        <div class="card-footer">
+          <strong>Biete:</strong> <%= @match_offer.departuredate.strftime("%d.%m.%Y") %>
+        </div>
+      </div>
+      <div class="col-md-4 col-md-offset-1 card shadow">
+        <div class="card-top">
+          <strong><%= @match_seek.departurelocal %> nach <%= @match_seek.destinationlocal %></strong>
+        </div>
+        <div class="card-body">
+          <%= truncate(@match_seek.description, length: 130) %>
+        </div>
+        <div class="card-footer">
+          <strong>Suche:</strong> <%= @match_seek.departuredate.strftime("%d.%m.%Y") %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

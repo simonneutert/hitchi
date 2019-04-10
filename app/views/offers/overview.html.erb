@@ -1,0 +1,18 @@
+<h1 class="text-center header_light">
+    <medium>Mein hitchi</medium>
+</h1>
+
+<p class="text-center hidden-xs">
+    <%= link_to fa_stacked_icon("power-off", base: "square-o") + "ausloggen", signout_path, id: "sign_out", class: "btn btn-danger btn-xs" %></p>
+
+<%= render 'offers/overview_offers' %>
+<%= render 'offers/overview_seek' %>
+
+<div class="row visible-xs">
+    <div class="col-xs-12">
+        <br>
+
+        <p class="text-center">
+            <%= link_to fa_stacked_icon("power-off", base: "square-o") + " ausloggen", signout_path, id: "sign_out", class: "btn btn-danger" %></p>
+    </div>
+</div>

@@ -1,0 +1,40 @@
+
+<h1>Listing Offers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Departure local</th>
+      <th>Departure date</th>
+      <th>Departure time</th>
+      <th>Destination</th>
+      <th>Description</th>
+      <th>Seek</th>
+      <th>Active</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @offers.each do |offer| %>
+      <tr>
+        <td><%= offer.user_id %></td>
+        <td><%= offer.departurelocal %></td>
+        <td><%= offer.departuredate %></td>
+        <td><%= offer.departuretime %></td>
+        <td><%= offer.destinationlocal %></td>
+        <td><%= offer.description %></td>
+        <td><%= offer.seek %></td>
+        <td><%= offer.active %></td>
+        <td><%= link_to 'Show', offer %></td>
+        <td><%= link_to 'Edit', edit_offer_path(offer) %></td>
+        <td><%= link_to 'Destroy', offer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Offer', new_offer_path %>

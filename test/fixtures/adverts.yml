@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  client: MyString
+  linkurl: MyString
+  viewcounter: 1
+  clickcounter: 1
+  begin_ad: 2016-08-09
+  end_ad: 2016-08-09
+
+two:
+  title: MyString
+  client: MyString
+  linkurl: MyString
+  viewcounter: 1
+  clickcounter: 1
+  begin_ad: 2016-08-09
+  end_ad: 2016-08-09

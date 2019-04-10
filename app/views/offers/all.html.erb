@@ -1,0 +1,3 @@
+<% @offers.find_each do |offer| %>
+  <supersmall><%= link_to offer.id.to_s + ": " + offer.departurelocal + " nach " + offer.destinationlocal, offers_mitfahrgelegenheit_path(offer) %></supersmall>
+<% end %>

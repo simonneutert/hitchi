@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+        <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+        <%= csrf_meta_tags %>
+        <meta property="fb:app_id" content="107916492982822"/>
+        <%= metamagic title: "hitchi - die Mitfahrgelegenheit aus der Community - ohne Abzocke", description: "Entstanden aus der Mitfahrgelegenheit-Community auf Facebook!", keywords: %w(kostenlos Mitfahrgelegenheit Mitfahren hitschi hitchi hitji), og: { title: "hitchi - die Mitfahrgelegenheit aus der Community - ohne Abzocke", description: "Entstanden aus der Mitfahrgelegenheit-Community auf Facebook!", url: "https://www.hitchi.de", image: hitchilogourl } %>
+        <%= render 'layouts/favicon' %>
+    </head>
+    <body class="<%= controller_name %> <%= action_name %> <% if current_user %>userarea<%end%>">
+        <%= render 'layouts/navigation' %>
+        <% if !current_user %>
+        <p id="cookienotice" class="cookiehint">Diese Website verwendet Cookies. Wenn Sie hitchi nutzen, stimmen Sie dem Einsatz von Cookies zu. <%= fa_icon("check-square-o") %></p>
+        <% end %>
+        <%= render 'layouts/notice' %>
+        <%= render 'layouts/error' %>
+
+        <div class="content">
+            <div class="container">
+                <%#= render 'layouts/facebook' %>
+                <%= yield %>
+            </div>
+        </div>
+        <%= render 'layouts/footer' %>
+
+    </body>
+</html>

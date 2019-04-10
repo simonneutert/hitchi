@@ -1,0 +1,24 @@
+<% metamagic title: @offer.departuredate.strftime("%d.%m.%Y").to_s + ":" + " Mitfahrgelegenheit von " + @offer.departurelocal + " nach " + @offer.destinationlocal, description: "Entstanden aus der Mitfahrgelegenheit-Community auf Facebook!",
+keywords: %w(kostenlos Mitfahrgelegenheit Mitfahren hitschi hitchi hitji), og: { title: @offer.departuredate.strftime("%d.%m.%Y").to_s + ":" + " Mitfahrgelegenheit von " + @offer.departurelocal + " nach " + @offer.destinationlocal, description:
+"Entstanden aus der Mitfahrgelegenheit-Community auf Facebook!", url: "https://www.hitchi.de/mitfahrgelegenheit/" + @offer.id.to_s, image: hitchilogourl } %>
+
+<%= render 'offers/show_share_big' %>
+<%= render 'offers/show_share_small' %>
+<% if current_user && current_user.id == @offeruser.id %>
+<div class="container-fluid">
+<p id="notice" class="notice">Teile deine Fahrt in einer Facebook-Gruppe, um noch besser gefunden zu werden!</p>
+</div>
+<% end %>
+
+<% if current_user %>
+<%= render 'offers/show_cu' %>
+<%else%>
+<%= render 'offers/show_ncu' %>
+<%end%>
+
+<div class="row">
+    <div class="col-xs-10 col-xs-offset-1 col-md-6 col-md-offset-3 text-center">
+        <hr class="hroffersplit">
+        <p class="text-center"><%= link_to 'hitchi, was?!', home_explain_path, class: "btn btn-danger" %></p>
+    </div>
+</div>

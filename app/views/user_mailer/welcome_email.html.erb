@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
+    </head>
+    <body>
+        <h1>hitchi.de:
+            <% if @matches.count > 1 %>Diese Fahrten könnten zu dir passen,<%else%>Eine Fahrt könnte zu dir passen,<%end%>
+            <%= @user.name %>!</h1>
+        <p><small>
+            hitchi ist aus der Mitfahrgelegenheit-Community auf Facebook entstanden!</small><br>
+        </p>
+        <br>
+        <% @matches.each do |match| %>
+        <p>
+            <strong>Abfahrt:
+            </strong>
+            <%= match.departuredate.strftime("%d.%m.%Y") %>
+            (<%= match.departuretime %>)</p>
+        <p>
+            <strong>Von:
+            </strong>
+            <%= match.departurelocal %>
+            <strong>nach:
+            </strong>
+            <%= match.destinationlocal %></p>
+            <p><br>
+                Link zur Anzeige:<br>
+                <%= link_to @hitchiurl + match.id.to_s,@hitchiurl + match.id.to_s %>
+            </p>
+            <br><hr>
+            <% end %>
+            <p><strong>Falls du nicht mehr per E-Mail benachrichtigt werden möchtest, ändere die Einstellung des dazugehörigen Gesuchs.</strong></p>
+            <hr>
+            <br>
+            <p>Wir wünschen dir stets eine gute (Mit-)Fahrt!</p>
+            <p>Dein hitchi.de-Team :)</p>
+        </body>
+    </html>

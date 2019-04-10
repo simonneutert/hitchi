@@ -1,0 +1,2 @@
+module AdminOffersHelper
+end

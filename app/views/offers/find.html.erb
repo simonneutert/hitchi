@@ -1,0 +1,42 @@
+<%= metamagic title: "hitchi - Suche deine Mitfahrgelegenheit in der Community - ohne Abzocke", description: "Suche deine Mitfahrgelegenheit oder lasse dich über dein Gesuch finden.", keywords: %w(kostenlos Mitfahrgelegenheit Mitfahren fragen antworten
+hitschi hitchi hitji), og: { title: "hitchi - Suche deine Mitfahrgelegenheit in der Community - ohne Abzocke", description: "Suche deine Mitfahrgelegenheit oder lasse dich über dein Gesuch finden.", url: "https://www.hitchi.de", image: hitchilogourl }
+%>
+<h1 class="text-center header_light">
+    <small>Mitfahrer suchen</small>
+</h1>
+<div class="form-group">
+    <%= form_tag(offers_find_path, :method => "get", id: "search-form", class: "form-inline") do %>
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1 text-center">
+            <br>
+            <label for="<%= :datumsuche %>">am</label>
+            <% if @searchdate %>
+              <%= text_field_tag :datumsuche, @searchdate.strftime("%d.%m.%Y").to_s ||= Time.zone.now.strftime("%d.%m.%Y").to_s, class: "datepicker form-control datepicker-white", :readonly => true, size: 10 %>
+            <% else %>
+              <%= text_field_tag :datumsuche, Time.zone.now.strftime("%d.%m.%Y").to_s, class: "datepicker form-control datepicker-white", :readonly => true, size: 10 %>
+            <% end %>
+
+            <label for="<%= :fahrtsuche %>">von</label>
+            <%= autocomplete_field_tag :fahrtsuche, params[:fahrtsuche], autocomplete_cityname_name_offers_path, placeholder: "Abfahrt", class: "form-control" %>
+            <label for="<%= :zielsuche %>">nach</label>
+            <%= autocomplete_field_tag :zielsuche, params[:zielsuche], autocomplete_cityname_name_offers_path, placeholder: "Ziel", class: "form-control" %>
+
+            <hr class="visible-xs formseperator">
+            <%= submit_tag "suchen", :name => nil, class: 'btn btn-success text-right' %>
+        </div>
+    </div>
+    <% end %>
+</div>
+
+<%= render 'offers/extra_search_options' %>
+
+<% if current_user %>
+<%= render 'offers/find_cu' %>
+<%else%>
+<%= render 'offers/find_ncu' %>
+<%end%>
+<% if @offers.present? %>
+<div class="text-center">
+    <%#= will_paginate @posts, previous_label: "zurück",next_label: "weiter", class: "flickr_pagination" %>
+</div>
+<% end %>

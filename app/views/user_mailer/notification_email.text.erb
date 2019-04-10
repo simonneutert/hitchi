@@ -1,0 +1,21 @@
+===============================================
+hitchi.de: Diese Fahrt könnte zu dir passen, <%= @user.name %>!
+===============================================
+
+Am: <%= @offer.departuredate %>
+<%= @offer.departuretime %>
+
+Von: <%= @offer.departurelocal %>
+nach: <%= @offer.destinationlocal %>
+
+Link zur Mitfahrgelegenheit:
+<%= link_to @hitchiurl + @offer.id.to_s,@hitchiurl + @offer.id.to_s %>
+
+
+_________________________________________
+
+Falls du nicht mehr per E-Mail benachrichtigt werden möchtest, ändere die Einstellung des dazugehörigen Gesuchs.
+_________________________________________
+
+Wir wünschen dir stets eine gute (Mit-)Fahrt!
+Dein hitchi.de-Team :)

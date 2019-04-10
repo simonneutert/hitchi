@@ -1,0 +1,23 @@
+<meta http-equiv="refresh" content="1;url=<%= @advert.linkurl %>"/>
+<div class="row">
+    <h1>
+        <small>Weiterleitung!</small>
+    </h1>
+    <p>Du wirst in 1 Sekunden automatisch weitergeleitet, damit verlässt du
+        <strong>hitchi.de</strong>
+    </p>
+
+    <p>
+        <strong>hitchi.de ist nicht für den Inhalt der weiterführenden Seite verantwortlich.</strong>
+    </p>
+    <p>Falls du nicht weitergeleitet werden möchtest, schließe dieses Fenster.</p>
+</div>
+<div id="adview">
+    <div class="col-sm-6 col-sm-offset-3">
+        <% if @advert %>
+        <%= link_to adclick_path(@advert.id) do %>
+        <%= cl_image_tag(@advert.advertimage.image), class: "img-respsonsive" %>
+        <% end #of link_to %>
+        <% end %>
+    </div>
+</div>

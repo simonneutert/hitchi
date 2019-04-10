@@ -1,0 +1,73 @@
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <br>
+            <li>
+                <small><%= link_to 'hitchi, was?!', home_explain_path %></small>
+            </li>
+            <% if current_user %>
+            <li>
+                <small>
+                    <%= link_to 'hitchi erstellen', neu_path %></small>
+            </li>
+            <%end%>
+            <li>
+                <small>
+                    <%= link_to 'Mitfahrgelegenheit finden', offers_search_path %>
+                </small>
+            </li>
+            <li>
+                <small>
+                    <%= link_to 'Mitfahrer finden', offers_find_path%>
+                </small>
+            </li>
+
+            <% if current_user %>
+            <li>
+                <small>
+                    <%= link_to 'Mein hitchi', offers_overview_path %></small>
+            </li>
+            <%else%>
+            <li>
+                <small>
+                    <%= link_to "Facebook Login", home_login_path, id: "sign_in" %>
+                </small>
+            </li>
+            <% end %>
+            <li>
+                <small>
+                    <%= link_to 'Impressum', home_impressum_path%>
+                </small>
+            </li>
+            <li>
+                <small>
+                    <%= link_to 'AGB & Datenschutz', home_agbdatenschutz_path%>
+                </small>
+            </li>
+        </div>
+        <div class="col-md-6">
+            <br>
+            <p>
+                <small>Diese Website verwendet Cookies, um Dienste bereitzustellen, Anzeigen zu personalisieren und Zugriffe zu analysieren. Informationen darüber, wie Sie diese Website verwenden, werden an Google weitergegeben. Durch die Nutzung dieser Website
+                    stimmen Sie der Cookie-Nutzung zu.</small>
+            </p>
+            <p>
+                <small>hitchi bezieht seine Geodaten über die Google Maps Geocoding API und das dazugehörige Kartenmaterial über die Google Static Maps API.
+                    <%= link_to 'Maps by Google', 'http://www.google.de/maps', target: "_blank" %></small>
+            </p>
+            <p><small>Mit der Nutzung dieser App unterwerfen sich die Nutzer den <a href="https://www.google.de/policies/terms/regional.html">Google Nutzungsbedingungen</a>. Folglich gilt aufgrund der von Google zur Verfügung gestellten Daten und Inhalte die <a href="https://www.google.com/policies/privacy/?hl=de">Google Datenschutzvereinbarung</a>. Mit der Nutzung von hitchi gibt der Nutzer sein Einverständnis bezüglich den geltenden Bedingungen von Google und einer Verarbeitung der Daten durch Google.</small></p>
+
+        </div>
+        <div class="col-md-3 text-right">
+            <br>
+            <p>
+                <small><%= link_to '<span class="glyphicon glyphicon-copyright-mark"></span>'.html_safe, root_path %>
+                    <%= Time.now.year %>
+                    <a href="http://www.simon-neutert.de" target="_blank">trojanischeresel.de</a>
+                </small>
+            </p>
+        </div>
+    </div>
+</div>
+</footer>

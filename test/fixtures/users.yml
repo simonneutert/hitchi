@@ -1,0 +1,16 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  provider: facebook
+  uid: 123456
+  name: MyString
+  oauth_token: MyString
+  oauth_expires_at: <%= Time.now + 3.hours %>
+
+#
+# two:
+#   provider: MyString
+#   uid: MyString
+#   name: MyString
+#   oauth_token: MyString
+#   oauth_expires_at: <%= Time.now + 3.days %>

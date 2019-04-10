@@ -1,0 +1,114 @@
+<br>
+<div class="text-center row"><span id="makeoffer" class="btn btn-active">Fahrt anbieten</span><span id="makeseek" class="btn btn-passive">Gesuch erstellen</span></div>
+<br class="visible-xs visible-md"><br class="visible-xs visible-md">
+<%= nested_form_for(@offer) do |f| %>
+<% if @offer.errors.any? %>
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <div id="error_explanation">
+            <!-- <h2><%= @offer.errors.count %>
+                Fehler sind noch zu beheben:</h2> -->
+            <ul>
+                <% @offer.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+                <% end %>
+            </ul>
+        </div>
+    </div>
+</div>
+<% end # of errors %>
+<div class="row">
+    <div class="col-sm-6 col-md-3 col-md-offset-1">
+        <div class="field form-group">
+            <%= f.label :departurelocal, 'Abfahrtsort' %><br>
+            <%#= f.text_field :departurelocal, class: "form-control" %>
+            <%= f.autocomplete_field :departurelocal, autocomplete_cityname_name_offers_path, class: "form-control" %>
+
+        </div>
+    </div>
+    <div class="col-sm-6 col-md-3 col-lg-3">
+        <div class="fiel form-group">
+            <%= f.label :destinationlocal, 'Zielort' %><br>
+            <%#= f.text_field :destinationlocal, class: "form-control" %>
+            <%= f.autocomplete_field :destinationlocal, autocomplete_cityname_name_offers_path, class: "form-control" %>
+
+        </div>
+    </div>
+    <div class="col-sm-6 col-md-2">
+        <div class="fiel form-group">
+            <%= f.label :departuredate, 'Datum'.html_safe %><br>
+            <%= f.text_field :departuredate, class: "datepicker form-control datepicker-white", readonly: true, size: 10 %>
+            <%#= f.date_select :departuredate, start_year: Date.today.year, end_year: (Date.today + 6.months).year, class: "form-control" %>
+        </div>
+    </div>
+    <div class="col-sm-6 col-md-2">
+        <div class="fiel form-group">
+            <%= f.label :departuretime, 'Uhrzeit' %><br>
+            <%= f.text_field :departuretime, class: "form-control" %>
+        </div>
+    </div>
+</div>
+
+<div class="row between_stops offerpart">
+    <div class="col-md-10 col-md-offset-1">
+        <div class="fiel form-group">
+            <%= f.label :between_stops, 'Zwischenstopps (getrennt durch Kommas, nach Abfolge auf Strecke geordnet)' %><br>
+            <%= f.text_field :between_stops, class: "form-control" %>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <div class="fiel form-group">
+            <%= f.label :description, 'Zusätzliche Angaben (750 Zeichen)' %><br>
+            <%= f.text_area :description, class: "form-control", maxlength: '750', rows: 3 %>
+        </div>
+    </div>
+</div>
+
+<div class="row seekpart">
+    <div class="col-md-10 col-md-offset-1">
+        <div class="field form-group checkbox">
+            <%= f.label :emailnotification do %>
+            <%= f.check_box :emailnotification, class: "checkbox text-right" %>E-Mail-Benachrichtigung an <%= current_user.email %>
+            bei passenden Anzeigen<% end %>
+            <%= f.hidden_field :seek, class: "checkbox text-right" %>
+        </div>
+    </div>
+</div>
+<% if f.object.persisted? %>
+<div class="row">
+  <div class="col-md-4 col-md-offset-1">
+      <div class="field form-group checkbox">
+          <%= f.label :active do %>
+          <%= f.check_box :active, class: "checkbox text-right" %>Anzeige aktiv
+          <% end %>
+      </div>
+  </div>
+</div>
+<% end %>
+<div class="row">
+    <div class="col-md-8 col-md-offset-1">
+      <hr class="hroffersplit">
+        <div class="field form-group checkbox">
+            <%= f.label :rules do %>
+            <%= f.check_box :rules, class: "checkbox text-right" %>Ich erkläre mich mit den
+            <%= link_to 'Allgemeinen Geschäftsbedingungen', home_agbdatenschutz_path, target: "_blank" %>
+            sowie den
+            <%= link_to 'Datenschutzbestimmungen', home_agbdatenschutz_path, target: "_blank" %>
+            von hitchi.de einverstanden.
+            <% end %>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <div class="actions">
+            <%= link_to 'zurück', offers_overview_path, class: "btn btn-danger pull-left" %>
+            <%= f.submit 'veröffentlichen', class: "btn btn-success pull-right", id: "offersubmitbutton", data: { disable_with: "veröffentlichen" } %>
+        </div>
+    </div>
+</div>
+<% end %>

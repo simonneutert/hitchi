@@ -1,0 +1,33 @@
+<h1>Fahrten nach
+    <%= params[:city] %></h1>
+<div class="row">
+    <% @offers.each do |offer| %>
+    <div class="col-md-4">
+        <%= link_to("http://facebook.com/" + @users.find(offer.user_id).uid.to_s) do %>
+        <div class="card">
+            <div class="card-top">
+                <p>
+                    <strong><%= params[:city] %></strong>
+                    nach
+                    <strong><%= offer.destinationlocal %></strong>
+                </p>
+            </div>
+            <div class="card-body">
+                <div class="card-left">
+                    <p><%= offer.departuredate.strftime("%d.%m.%Y") %></p>
+
+                </div>
+                <div class="card-right">
+                    <p><%= offer.departuretime %></p>
+                </div>
+            </div>
+            <div class="card-body">
+                <p><%= @users.find(offer.user_id).name %></p>
+
+            </div>
+        </div>
+        <% end %>
+
+    </div>
+    <% end %>
+</div>

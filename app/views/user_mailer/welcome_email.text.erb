@@ -1,0 +1,24 @@
+===============================================
+hitchi.de: Diese Fahrt könnte zu dir passen, <%= @user.name %>!
+===============================================
+<% @matches.each do |match| %>
+Am: <%= match.departuredate %>
+<%= match.departuretime %>
+
+Von: <%= match.departurelocal %>
+nach: <%= match.destinationlocal %>
+
+Link zur Mitfahrgelegenheit:
+<%= link_to @hitchiurl + match.id.to_s,@hitchiurl + match.id.to_s %>
+
+
+<!-- Falls du nicht mehr benachrichtigt werden möchtest, lösche dein Gesuch :)
+Gesuch löschen:
+<%= link_to @hitchiurl + @seeks.where(departurelocal: match.departurelocal, departuredate: match.departuredate, destinationlocal: match.destinationlocal).first.id.to_s, @hitchiurl + @seeks.where(departurelocal: match.departurelocal, departuredate: match.departuredate, destinationlocal: match.destinationlocal).first.id.to_s %> -->
+_________________________________________
+<% end %>
+Falls du nicht mehr per E-Mail benachrichtigt werden möchtest, ändere die Einstellung des dazugehörigen Gesuchs.
+_________________________________________
+
+Wir wünschen dir stets eine gute (Mit-)Fahrt!
+Dein hitchi.de-Team :)

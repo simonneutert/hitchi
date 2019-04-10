@@ -1,0 +1,19 @@
+<meta http-equiv="refresh" content="5;url=http://<%= request.host_with_port %>/mitfahrgelegenheit/<%= @offer.id.to_s %>/anschreiben"/>
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3">
+    <h4 class="text-center"><%= fa_icon("cog spin 3x fw") %></h4>
+    <h1>
+        <small>Deine Nachricht vorbereitet, bitte gedulde dich kurz.</small>
+    </h1>
+    <p>Du wirst umgehend weitergeleitet.</p>
+  </div>
+</div>
+<div id="adview">
+    <div class="col-sm-6 col-sm-offset-3">
+        <% if @advert %>
+        <%= link_to adclick_path(@advert.id), target: "_blank" do %>
+        <%= cl_image_tag @advert.advertimage.image, class: "img-responsive" %>
+        <% end #of link_to %>
+        <% end #of image%>
+    </div>
+</div>

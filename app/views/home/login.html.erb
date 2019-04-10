@@ -1,0 +1,29 @@
+<h1 class="text-center header_light">
+  <medium>Login</medium>
+</h1>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="card shadow">
+      <div class="card-top">
+        <p>
+          <strong>Bevor du dich einloggst:</strong>
+        </p>
+      </div>
+      <div class="card-body">
+        <p>Ich erkläre mich mit den
+          <%= link_to 'Allgemeinen Geschäftsbedingungen', home_agbdatenschutz_path(anchor: "to_agb") %>
+          sowie den
+          <%= link_to 'Datenschutzbestimmungen', home_agbdatenschutz_path(anchor: "to_datenschutz") %>
+          von hitchi.de einverstanden und bin über 18 Jahre alt.</p>
+      </div>
+      <div class="card-footer">
+        <div class="text-right">
+          <p id="acceptbutton">
+            <span class="btn btn-primary">Okay!</span>
+          </p>
+          <p id="facebookloginbutton"><%= link_to fa_stacked_icon("facebook", base: "square-o") + "Mit Facebook einloggen", "/auth/facebook", id: "sign_in", class: "btn btn-primary" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

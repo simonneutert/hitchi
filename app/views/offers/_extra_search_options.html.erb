@@ -1,0 +1,50 @@
+<% if @offers.present? %>
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <div class="panel panel-default">
+      <div id="searchpanel" class="panel-heading text-center">
+        Ergebnisse filtern <%= fa_icon("filter") %>
+      </div>
+
+      <div class="panel-body searchoptions">
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" checked name="isdiameterdep" id="isdiameterdep">
+                40km Umkreissuche Abfahrtsort
+              </label>
+            </div>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" checked name="isdiameterdest" id="isdiameterdest">
+                40km Umkreissuche Zielort
+              </label>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" default="false" name="minustag" id="minustag">
+                Ergebnisse für Vortag
+              </label>
+            </div>
+            <div class="checkbox">
+              <label>
+                  <input type="checkbox" checked name="plustag" id="plustag">
+                  Ergebnisse für Folgetag
+              </label>
+            </div>
+            <div class="checkbox">
+              <label>
+                  <input type="checkbox" checked name="plusplustag" id="plusplustag">
+                  Ergebnisse für zwei weitere Tage
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>

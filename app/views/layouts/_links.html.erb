@@ -1,0 +1,26 @@
+<li role="presentation" class="visible-xs">
+    <%= link_to fa_stacked_icon("home", base: "square-o") + 'Startseite', root_path, data: { turbolinks: false } %>
+</li>
+<% if current_user %>
+<li role="presentation">
+    <%= link_to fa_stacked_icon("plus", base: "square-o") + 'erstellen', neu_path %>
+</li>
+<% end %>
+<li role="presentation">
+    <%= link_to fa_stacked_icon("car", base: "square-o") + 'Mitfahrgelegenheiten', offers_search_path %>
+</li>
+<li role="presentation" >
+    <%= link_to fa_stacked_icon("user-plus", base: "square-o") + 'Mitfahrer', offers_find_path%>
+</li>
+<% if current_user %>
+<li role="presentation">
+<%= link_to fa_stacked_icon("comments", base: "square-o") + 'Nachrichten <span class="message_counter"></span>'.html_safe, messages_path, class: "msgmenu" %>
+</li>
+<li role="presentation">
+    <%= link_to fa_stacked_icon("user", base: "square-o") + 'Mein hitchi', offers_overview_path %>
+</li>
+<%else%>
+<li role="presentation">
+  <%= link_to fa_stacked_icon("facebook", base: "square-o") + "Login", home_login_path %>
+</li>
+<% end %>

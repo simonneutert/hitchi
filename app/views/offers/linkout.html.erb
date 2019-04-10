@@ -1,0 +1,19 @@
+<meta http-equiv="refresh" content="5;url=https://facebook.com/<%= params[:facebookid] %>"/>
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3">
+    <h1>
+        <small>Weiterleitung!</small>
+    </h1>
+    <p>Du wirst in 5 Sekunden automatisch weitergeleitet, damit verlässt du <strong>hitchi.de</strong>. Falls du nicht weitergeleitet werden möchtest, schließe dieses Fenster.</p>
+    <p><strong>hitchi.de ist nicht für den Inhalt der weiterführenden Seite verantwortlich.</strong></p>
+  </div>
+</div>
+<div id="adview">
+    <div class="col-sm-6 col-sm-offset-3">
+        <% if @advert %>
+        <%= link_to adclick_path(@advert.id), target: "_blank" do %>
+        <%= cl_image_tag @advert.advertimage.image, class: "img-responsive" %>
+        <% end #of link_to %>
+        <% end #of image%>
+    </div>
+</div>

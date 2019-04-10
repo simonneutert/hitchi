@@ -1,0 +1,52 @@
+<h1 class="text-center">Deine Nachrichten</h1>
+<% if !params[:clicked] %>
+  <p class="text-center newmsgrefresh"><%= link_to fa_icon("refresh") + " Nachrichten neu laden", messages_path(clicked: true), class: "btn btn-primary btn-xs" %></p>
+<% end %>
+<% if @messages.count > 0 %>
+<% @messages.each do |message| %>
+<div class="row narrowrow">
+<div class="col-sm-10 col-sm-offset-1">
+<div class="card shadow <% if message.sender == current_user.id %><% if message.senderclick == false%>card-new<%end%><% else %><% if message.recipentclick == false%>card-new<%end%><% end %>">
+  <div class="card-top">
+    <p>
+      <strong><%= User.find(message.sender).name %></strong> an <strong><%= User.find(message.recipent).name %></strong><br class="visible-xs">
+      <small>
+        <% if message.sender == current_user.id %>
+          <% if message.recipentclick == false%>
+          <span class="label label-danger">ungelesen von <%= User.find(message.recipent).name.split(" ")[0] %></span>
+          <%end%>
+        <% else %>
+          <% if message.senderclick == false%>
+            <span class="label label-danger">ungelesen von <%= User.find(message.sender).name.split(" ")[0] %></span>
+          <%end%>
+        <% end %>
+      </small>
+      <% if message.sender == current_user.id %><% if message.senderclick == false%><span class="label label-primary">neu</span> <%end%><% else %><% if message.recipentclick == false%><span class="label label-primary">neu</span> <%end%><% end %>
+    </p>
+  </div>
+  <div class="card-body-msg">
+    <p><% if message.offer.seek == true %><strong>[Gesuch]</strong><% end %> Abfahrt: <strong><%= message.offer.departuredate.strftime("%d.%m.%Y").to_s %></strong> von <strong><%= message.offer.departurelocal %></strong> nach <strong><%= message.offer.destinationlocal %></strong></p>
+  </div>
+  <div class="card-footer">
+    <p class="text-right"><%= link_to '<span class="glyphicon glyphicon-remove"></span>'.html_safe, message, method: :delete, data: { confirm: 'Die gesamte Konversation wird gelöscht, auch für deinen Gegenüber. Bist du sicher?' }, class:"btn btn-danger pull-left" %> <%= link_to fa_icon("comments"), message, class:"btn btn-primary" %><% if message.sender == current_user.id %><% if message.senderclick == false%> <%= link_to fa_icon("check-square-o"), markread_path(message.id), class:"btn btn-warning" %><%end%><% else %><% if message.recipentclick == false%> <%= link_to fa_icon("check-square-o"), markread_path(message.id), class:"btn btn-warning" %><%end%><% end %></p>
+  </div>
+</div>
+<% if message.answers.count >0 %>
+<div class="card shadow answer">
+  <div class="card-top">
+    <p><small><strong><%= link_to User.find(message.answers.last.sender).name, offers_linkout_path(message.offer.id, User.find(message.answers.last.sender).uid), target: '_blank' %></strong> um <strong><%= message.answers.last.created_at.strftime("%H:%M Uhr").to_s %></strong><%= " (" + message.answers.last.created_at.strftime("%d.%m.%Y").to_s + ")" %></small></p>
+  </div>
+</div>
+<%end%>
+</div>
+</div>
+
+<%end%>
+<%end%>
+<div class="row">
+  <div class="col-sm-10 col-sm-offset-1">
+    <hr class="hroffersplit">
+    <p class="text-center"><strong>Wichtig! </strong>hitchi koppelt Nachrichten und Anzeigen. Wird die Anzeige gelöscht, werden auch die dazugehörigen Nachrichten gelöscht!</p>
+    <p class="text-center">So herrscht hier immer Ordnung und du behältst die Übersicht :)</p>
+  </div>
+</div>

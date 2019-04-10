@@ -1,0 +1,55 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  departurelocal: Mainz # string
+  departure: Mainz # from fixtures
+  departuredate: <%= Time.now + 1.days %>
+  departuretime: flexibel
+  destinationlocal: Heilbronn
+  destination: Heilbronn
+  description: Lorem Ipsum
+  seek: false
+  active: true
+  departure: mayence
+  destination: heilbronn
+  rules: true
+  user_id: <%= User.first %>
+
+two:
+  departurelocal: Mainz
+  departure: Mainz
+  departuredate: <%= Time.now + 1.days %>
+  departuretime: flexibel
+  destinationlocal: Heilbronn
+  destination: Heilbronn
+  description: Lorem Ipsum
+  seek: true
+  active: true
+  departure: mayence
+  destination: heilbronn
+  rules: true
+  user_id: <%= User.first %>
+
+three:
+  departurelocal: Mainz # string
+  departure: Mainz # from fixture
+  departuredate: <%= Time.now + 1.days %>
+  departuretime: flexibel
+  destinationlocal: Wiesbaden
+  destination: Wiesbaden
+  description: Lorem Ipsum
+  seek: true
+  active: true
+  departure: mayence
+  destination: heilbronn
+  rules: true
+  user_id: <%= User.last %>
+
+# two:
+#   departurelocal: MyString
+#   departuredate: 2016-07-22
+#   departuretime: MyString
+#   destination: MyString
+#   description: MyString
+#   seek: false
+#   active: false

@@ -1,0 +1,15 @@
+<% if @tomorrowsrides %>
+<% countrides = 1 %>
+  <ul class="list-inline"><li><strong>oder schnelle Fahrtsuche: </strong></li>
+    <br>
+<% @tomorrowsrides.each do |tr| %>
+  <% ridecount = tr.offers.where("departuredate < ?", (Date.current + 3.days)).where(seek: false).pluck(:id).count %>
+  <% if ((countrides < 5) && (ridecount >= 2)) %>
+  <%= link_to offers_search_path(fahrtsuche: tr.name, datumsuche: Date.current) do %>
+    <li class="btn btn-primary hitchiquick"><%= tr.name %> <span class="badge"><%= ridecount.to_s + "+"%></span></li>
+  <% end %>
+  <% countrides = countrides + 1 %>
+  <% end %>
+<% end %>
+  </ul>
+<% end %>

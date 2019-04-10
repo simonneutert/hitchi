@@ -1,0 +1,8 @@
+<div class="facebooklogin">
+<% if current_user %>
+  <strong><%= current_user.name %></strong>
+  <%= link_to "ausloggen?", signout_path, id: "sign_out" %>
+<% else %>
+  <%= link_to "facebook login", "/auth/facebook", id: "sign_in" %>
+<% end %>
+</div>

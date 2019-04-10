@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: hlasjqlgz
+  api_key: '334962372278559'
+  api_secret: F4DFXNUj6ukDmpgx313iUiGkEQI
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: hlasjqlgz
+  api_key: '334962372278559'
+  api_secret: F4DFXNUj6ukDmpgx313iUiGkEQI
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: hlasjqlgz
+  api_key: '334962372278559'
+  api_secret: F4DFXNUj6ukDmpgx313iUiGkEQI
+  enhance_image_tag: true
+  static_image_support: false

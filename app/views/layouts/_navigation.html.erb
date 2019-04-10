@@ -1,0 +1,22 @@
+<div class="menu">
+    <div class="header clearfix hidden-xs">
+        <nav>
+            <ul class="nav nav-pills pull-right navigationbar">
+                <%= render 'layouts/links' %>
+            </ul>
+        </nav>
+        <h4 class="navigationbar text-muted logo">
+          <strong><%= link_to 'hitchi', root_path %></strong>
+        </h4>
+    </div>
+</div>
+<div class="header clearfix visible-xs">
+    <div class="menu-reveal">
+        <h6 class="navigationbar text-muted logosmall">hitchi<span class="glyphicon glyphicon-menu-hamburger pull-right menu-hamburger"></span></h6>
+    </div>
+    <nav class="menu-status">
+        <ul class="nav midspaced">
+            <%= render 'layouts/links' %>
+        </ul>
+    </nav>
+</div>

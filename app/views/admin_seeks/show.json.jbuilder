@@ -1,0 +1,1 @@
+json.partial! "admin_seeks/admin_seek", admin_seek: @admin_seek

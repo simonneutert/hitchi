@@ -1,0 +1,40 @@
+<h1 class="text-center"><small>aktuelle Angebote nach Abfahrtsort</small></h1>
+<table id="adTable" class="table table-striped tablesorter">
+  <thead>
+    <tr>
+      <th>Stadt</th>
+      <th>Angebote</th>
+      <th>letztes Update</th>
+      <th>Datum</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @departures.each do |d| %>
+      <tr>
+        <td><%= d.name %></td>
+        <td><%= d.offers.pluck(:id).count %></td>
+        <td><%= d.updated_at.strftime("%d.%m.%Y") %></td>
+        <td><%= d.created_at.strftime("KW%V %B %Y") %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<!-- pager -->
+<div id="pager" class="ts-pager">
+  <form>
+    <span class="first"><%= fa_icon("fast-backward") %></span>
+    <span class="prev"><%= fa_icon("backward") %></span>
+    <span class="pagedisplay"></span> <!-- this can be any element, including an input -->
+    <span class="next"><%= fa_icon("forward") %></span>
+    <span class="last"><%= fa_icon("fast-forward") %></span>
+    <select class="pagesize">
+      <option value="10">10</option>
+      <option value="20">20</option>
+      <option value="30">30</option>
+      <option value="40">40</option>
+      <option value="all">Alle Zeilen</option>
+    </select>
+  </form>
+</div>
+<%= link_to 'Back', admin_dashboards_path %>

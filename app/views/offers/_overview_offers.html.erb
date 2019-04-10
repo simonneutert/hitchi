@@ -1,0 +1,81 @@
+<% if @offers.where(seek: false).any? %>
+<br><hr class="hroffersplit">
+<div class="row">
+  <div class="col-sm-6">
+    <h2 class="overviewh2"><%= fa_stacked_icon("car", base: "square-o") %>Anzeigen</h2>
+  </div>
+  <div class="col-sm-6">
+    <%# if @seekers.any? %>
+    <!-- <h2 class="overviewh2 hidden-xs"><%= fa_stacked_icon("user-plus", base: "square-o") %>Vorschläge</h2> -->
+    <%# end%>
+  </div>
+</div>
+
+<% @offers.where(seek: false).each_slice(1) do |offers| %>
+  <% offers.each do |offer| %>
+  <div class="row">
+
+  <div class="col-sm-6">
+    <div class="card <% if offer.seek == true %>card-seek <% end %><% if offer.active == false %>card-inactive <% end %> shadow">
+      <div class="card-top">
+        <p>
+          <% if offer.seek == true %>
+          <strong>Suche:
+          </strong><% end %><%= offer.departuredate.strftime("%d.%m.%Y") %><br>
+          <strong><%= offer.departurelocal %></strong>
+          nach
+          <strong><%= offer.destinationlocal %></strong>
+        </p>
+      </div>
+      <div class="card-body">
+        <p>Zeit:&nbsp;<strong><%= offer.departuretime %></strong>
+        </p>
+        <p>
+        <% if offer.description? %>
+          <%= truncate(offer.description, length: 140) { link_to " mehr", offers_mitfahrgelegenheit_path(offer) } %>
+        <% else %>
+          <br><span class="text-center">Keine zusätzlichen Infos</span>
+        <% end %>
+        </p>
+      </div>
+      <div class="card-footer overview-card-footer">
+        <p>
+          <% if !offer.between_stops.blank? %>
+          <strong>Über: </strong><%= offer.between_stops %>
+          <% else %>&nbsp;<% end %>
+        </p>
+        <p class="text-right">
+          <small>
+            <%= link_to '<span class="glyphicon glyphicon-remove"></span>'.html_safe, offer, method: :delete, data: { confirm: 'Löschst du diese Anzeige, werden auch deine dazugehörigen Nachrichten gelöscht! Bist du sicher?' }, class: "btn btn-danger pull-left" %>
+            <%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_offer_mitfahrgelegenheit_path(offer), class: "btn btn-info text-right" %>
+
+            <%= link_to fa_icon("search"), offers_find_path(fahrtsuche: offer.departurelocal, zielsuche: offer.destinationlocal, mysuche: offer.departuredate), class: "btn btn-success text-right" %>
+            <%= link_to '<span class="glyphicon glyphicon-share"></span>'.html_safe, offers_mitfahrgelegenheit_path(offer), class: "btn btn-primary text-right" %>
+          </small>
+        </p>
+      </div>
+    </div>
+    <p class="pull-right"><span class="btn btn-primary btn-xs countflag shadow">Aufrufe: <span class="badge"><%= offer.viewcounter.to_s %></span></span></p>
+
+  </div>
+
+  <div class="col-sm-6">
+    <% offer.find_near %>
+    <% @offerseekers = Offer.where(destination_id: offer.near_destinations, departure_id: offer.near_departures, departuredate: offer.departuredate, seek: true, active: true).where.not(user_id: current_user.id) %>
+    <% if @offerseekers.any? %>
+    <h4 class="perfectmatch">
+      Für diese Fahrt gibt es <%= @offerseekers.pluck(:id).count.to_s %> Gesuch<% if @offerseekers.pluck(:id).count > 1%>e<%end%>, <% if @offerseekers.pluck(:id).count > 1%>die<% else %>das<%end%> passen könnte<% if @offerseekers.pluck(:id).count > 1%>n<% end %>:</h4>
+      <% @offerseekers.each do |seeker| %>
+      <div class="card shadow">
+        <p><%= link_to fa_icon("commenting") + " <small>".html_safe + User.find(seeker.user_id).name + ":</small> ".html_safe + " " + truncate(seeker.description, length: 36) + "<small> (".html_safe + seeker.departuretime + ")</small>".html_safe, offers_mitfahrgelegenheit_path(seeker) %></p>
+      </div>
+      <% end %>
+    <% end #of seekers %>
+  </div>
+
+  <% end %>
+</div>
+<hr class="hroffersplit">
+<% end %>
+
+<% end # top if %>

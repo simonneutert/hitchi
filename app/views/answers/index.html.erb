@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Answers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Message</th>
+      <th>Content</th>
+      <th>Recipent</th>
+      <th>Sender</th>
+      <th>User</th>
+      <th>Status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @answers.each do |answer| %>
+      <tr>
+        <td><%= answer.message %></td>
+        <td><%= answer.content %></td>
+        <td><%= answer.recipent %></td>
+        <td><%= answer.sender %></td>
+        <td><%= answer.user %></td>
+        <td><%= answer.status %></td>
+        <td><%= link_to 'Show', answer %></td>
+        <td><%= link_to 'Edit', edit_answer_path(answer) %></td>
+        <td><%= link_to 'Destroy', answer, method: :delete, data: { confirm: 'Bist du sicher?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Answer', new_answer_path %>

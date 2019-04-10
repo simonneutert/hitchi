@@ -1,0 +1,26 @@
+<br>
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <p><%#= link_to 'Werbung verwalten',adverts_path %></p>
+        <p><%= link_to 'Mitfahrgelegenheiten verwalten', admin_offers_path %></p>
+        <p><%= link_to 'Mitfahrgesuche verwalten', admin_seeks_path %></p>
+        <p><%= link_to 'Abfahrtsort auswerten', adverts_departurelog_path %></p>
+        <p><%= link_to 'Zielorte auswerten', adverts_destinationlog_path %></p>
+        <hr class="hroffersplit">
+        <p>
+            <strong>User mit Login:</strong>
+            <%= @userscount %></p>
+        <p>
+            <strong>Anzeigen aktuell:</strong>
+            <%= @offerscount %></p>
+        <p>
+            <strong>Nachrichten / Anworten:</strong>
+            <%= @messagescount %>
+            /
+            <%= @answerscount %></p>
+        <hr class="hroffersplit">
+        <% if admin_signed_in? %>
+        <%= link_to('logout', destroy_admin_session_path, method: :delete, class: "btn btn-info") %>
+        <% end %>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+<br>
+<div class="row hidden-xs hidden-sm hidden-md narrowrow">
+  <div class="col-sm-6 col-sm-offset-3">
+  <%= link_to "https://www.facebook.com/sharer/sharer.php?u=https%3A//www.hitchi.de/mitfahrgelegenheit/" + @offer.id.to_s, target: "_blank", class: "pull-left" do %>
+  <div id="shareBtn" class="btn btn-info btn-sm clearfix"><%= fa_stacked_icon("facebook", base: "square-o") %>
+      Auf Facebook teilen</div>
+  <% end %>
+  <form class="form-inline pull-right">
+      <div class="form-group">
+          <textinput id="copyurl" class="form-control"><%= request.original_url %></textinput>
+          <!-- Trigger -->
+          <span class="btn copybtn" data-clipboard-action="copy" data-clipboard-target="#copyurl">
+              <span class="glyphicon glyphicon-link" aria-hidden="true"></span>
+              kopieren
+          </span>
+      </div>
+  </form>
+</div>
+</div>

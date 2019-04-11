@@ -13,6 +13,6 @@ ENV RACK_ENV=production
 ENV RAILS_ENV=production
 
 COPY . .
-RUN chmod +x start.sh
 
+RUN chmod +x start.sh
 CMD [ "bash" , "/hitchi/start.sh"]

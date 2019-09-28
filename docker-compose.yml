@@ -21,13 +21,11 @@ services:
     networks:
       - web
       - default
-    expose:
-      - "3333"
     labels:
       - "traefik.docker.network=web"
       - "traefik.enable=true"
       - "traefik.hitchi.frontend.rule=Host:www.hitchi.de"
-      - "traefik.hitchi.port=3333"
+      - "traefik.hitchi.port=3000"
       - "traefik.hitchi.protocol=http"
 
   db:

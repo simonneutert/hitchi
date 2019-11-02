@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.5.5'
+ruby '2.6.5'
 
 gem 'dotenv-rails', groups: [:production, :development, :test]
 
@@ -35,7 +35,7 @@ gem 'geocoder'
 gem 'nested_form'
 gem "font-awesome-rails"
 gem 'clipboard-rails'
-gem 'devise', '~> 4.6.1'
+gem 'devise', '~> 4.7.1'
 gem 'devise-i18n'
 gem 'carrierwave', '~> 1.2.3'
 gem 'cloudinary'

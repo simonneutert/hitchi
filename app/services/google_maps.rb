@@ -30,7 +30,7 @@ module GoogleMaps
       src << BASE_URL
       src << "&size=#{@width}x#{@height}&maptype="
       src << @maptype
-      src << "&&markers=color:purple%7Clabel:A%7C"
+      src << "&markers=color:purple%7Clabel:A%7C"
       src << @from_place_cord
       src << "&markers=color:blue%7Clabel:B%7C"
       src << @to_place_cord

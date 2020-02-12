@@ -31,7 +31,7 @@ else
     https_proxy: nil,           # HTTPS proxy server (user:pass@host:port)
     # cache: nil,                 # cache object (must respond to #[], #[]=, and #keys)
     cache_prefix: 'geocoder:',  # prefix (string) to use for all cache keys
-
+    api_key: ENV['GOOGLE_MAPS_API_KEY_BACKEND'], # API key for geocoding service
     # Exceptions that should not be rescued by default
     # (if you want to implement custom error handling);
     # supports SocketError and Timeout::Error

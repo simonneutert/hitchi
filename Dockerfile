@@ -8,6 +8,7 @@ RUN \
 RUN mkdir /hitchi
 WORKDIR /hitchi
 
+RUN gem install bundler
 COPY Gemfile .
 COPY Gemfile.lock .
 RUN bundle check || bundle install

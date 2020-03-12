@@ -8,6 +8,9 @@ RUN \
 RUN mkdir /hitchi
 WORKDIR /hitchi
 
+COPY GEMFILE* .
+RUN bundle check || bundle install
+
 ENV RACK_ENV=production
 ENV RAILS_ENV=production
 

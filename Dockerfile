@@ -8,7 +8,8 @@ RUN \
 RUN mkdir /hitchi
 WORKDIR /hitchi
 
-COPY GEMFILE* .
+COPY Gemfile .
+COPY Gemfile.lock .
 RUN bundle check || bundle install
 
 ENV RACK_ENV=production

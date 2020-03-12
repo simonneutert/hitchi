@@ -13,12 +13,9 @@ services:
       WEB_CONCURRENCY: 4
       DB_POOL: 12
     depends_on:
-      - box_of_gems
       - db
     expose:
       - "3000"
-    volumes:
-      - box_of_gems:/box_of_gems
     restart: unless-stopped
     privileged: true
     networks:
@@ -36,15 +33,6 @@ services:
     environment:
       TZ: 'Europe/Berlin'
     restart: always
-
-  box_of_gems:
-    image: busybox
-    restart: unless-stopped
-    volumes:
-      - box_of_gems:/box_of_gems
-
-volumes:
-  box_of_gems:
 
 networks:
   web:

@@ -1,4 +1,4 @@
-FROM ruby:2.6.5-stretch
+FROM ruby:2.6.5
 
 RUN \
   apt-get update && \
@@ -8,7 +8,6 @@ RUN \
 RUN mkdir /hitchi
 WORKDIR /hitchi
 
-ENV BUNDLE_PATH /box_of_gems
 ENV RACK_ENV=production
 ENV RAILS_ENV=production
 

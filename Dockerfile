@@ -11,7 +11,7 @@ WORKDIR /hitchi
 RUN gem install bundler
 COPY Gemfile .
 COPY Gemfile.lock .
-RUN bundle check || bundle install
+RUN bundle install
 
 ENV RACK_ENV=production
 ENV RAILS_ENV=production

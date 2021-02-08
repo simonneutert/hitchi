@@ -39,7 +39,7 @@ gem "font-awesome-rails"
 gem 'clipboard-rails'
 gem 'devise', '~> 4.7.1'
 gem 'devise-i18n'
-gem 'carrierwave', '~> 1.2.3'
+gem 'carrierwave', '~> 1.3.2'
 gem 'cloudinary'
 gem 'file_validators'
 gem 'jquery-tablesorter'
